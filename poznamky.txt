@@ -1,0 +1,8 @@
+1. uvodni stranka, tam bude html formular
+2. login bude email (html5 features)
+3. heslo budeh heslo (html5 features)
+www.w3schools.com/html/html_form_input_types.asp
+4. napojte databazi (relacni, postgres, sqlite3)
+5. ulozte pomoci knihovny SQL Alchemy (na flask) registrovaneho do databaze
+6. session
+7. ORM
