@@ -1,39 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-  h1 {text-align: center;}
-  form {text-align: center;}
-</style>
-<title>Page Title</title>
+  <link rel="stylesheet" href="styling.css">
+  <title>Page Title</title>
 </head>
+
 <body>
 
-<h1>Login</h1>
+  <h1>Login</h1>
 
-<div class="container">
-    <form class="form-signin" method="POST" action="/login">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        {{ form.hidden_tag() }}
-        {{ wtf.form_field(form.username) }}
-        {{ wtf.form_field(form.password) }}
-        {{ wtf.form_field(form.remember) }}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-</div>
-
-<!-- <form>  
-  <div class="container">   
-      <label>Username : </label>   
-      <input type="text" placeholder="Enter Username" name="username" required>  
-      <label>Password : </label>   
-      <input type="password" placeholder="Enter Password" name="password" required>  
-      <button type="submit">Login</button>   
-      <input type="checkbox" checked="checked"> Remember me    
-  </div>  
-</form>   -->  
+  <form>
+    <div class="container">
+      <label>Username : </label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+      <label>Password : </label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+      <button type="submit">Register</button>
+    </div>
+  </form>
 </body>
-</html> 
 
-
-
+</html>
