@@ -1,5 +1,5 @@
 body {
-    background-image: url("images/template_bg.jpg");
+    background-image: url("templates/images/template_bg.jpg");
     background-position: center;
     text-align: center;
 }
@@ -33,7 +33,7 @@ ul {
     font-style: italic;
     float: left;
     text-align: left;
-    background-image: url("images/sidebar.jpg");
+    background-image: url("templates/images/sidebar.jpg");
 }
 
 
