@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField
+from wtforms import StringField, PasswordField, BooleanField, validators
 from wtforms.validators import InputRequired, Email, Length
 
 app = Flask(__name__)
@@ -10,6 +10,14 @@ class LoginForm(FlaskForm):
     Email = StringField('email', validators = [InputRequired(), Length(min = 10, max = 50)])
     password = PasswordField('password', validators = [InputRequired(), Length(min = 10, max = 50)])
     remember = BooleanField('remember me')
+
+class RegisterForm(FlaskForm):
+    email = StringField('Email Address', [InputRequired(), Length(min = 10, max = 50)])
+    password = PasswordField('New Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Repeat Password')
+    accept_tos = BooleanField('I accept the Terms of Service and Privacy Notice (updated Jan 22, 2015)', [validators.DataRequired()])
 
 @app.route("/")
 def html():
@@ -22,7 +30,7 @@ def login():
 
 @app.route("/register")
 def register():
-    form = LoginForm() #zmenit
+    form = RegisterForm() #zmenit
     return render_template('register.html', form = form)
 
 if __name__ == "__main__":
