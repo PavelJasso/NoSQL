@@ -1,3 +1,4 @@
+import redis
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, validators
@@ -13,16 +14,16 @@ app.config['SECRET_KEY'] = 'random_text'
 
 class LoginForm(FlaskForm):
     Email = StringField('email', validators = [InputRequired(), Length(min = 10, max = 50)])
-    password = PasswordField('password', validators = [InputRequired(), Length(min = 10, max = 50)])
-    remember = BooleanField('remember me')
+    password = PasswordField('heslo', validators = [InputRequired(), Length(min = 10, max = 50)])
+    remember = BooleanField('Pamatuj si mě')
 
 class RegisterForm(FlaskForm):
-    email = StringField('Email Address', [InputRequired(), Length(min = 10, max = 50)])
-    password = PasswordField('New Password', [
+    email = StringField('Email', [InputRequired(), Length(min = 10, max = 50)])
+    password = PasswordField('Nové heslo', [
         validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords must match')])
-    confirm = PasswordField('Repeat Password')
-    accept_tos = BooleanField('I accept the Terms of Service and Privacy Notice (updated Jan 22, 2015)', [validators.DataRequired()])
+        validators.EqualTo('Potvrdit', message='Hesla musí být stejná!')])
+    confirm = PasswordField('Heslo znovu')
+    accept_tos = BooleanField('Přijímám podmínky.', [validators.DataRequired()])
 
 @app.route("/")
 def html():
