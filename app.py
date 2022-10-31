@@ -2,6 +2,11 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, validators
 from wtforms.validators import InputRequired, Email, Length
+from flask import Flask
+from flask_redis import FlaskRedis
+
+app = Flask(__name__)
+redis_client = FlaskRedis(app)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'random_text'
