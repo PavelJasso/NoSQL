@@ -3,22 +3,28 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styling.css') }}">
-  <title>Page Title</title>
+  <title>Přihlášení</title>
 </head>
 
 <body>
-
-  <h1>Login</h1>
-
   <form>
-    <div class="container">
-      <label>Username : </label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-      <label>Password : </label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-      <button type="submit">Login</button>
+    <div class="stranka">
+      <h1>Přihlášení</h1>
+      <label>Uživatelské jméno : </label>
+      <input type="text" placeholder="Uživatelské jméno" name="username" required>
+      <label>Heslo : </label>
+      <input type="password" placeholder="Heslo" name="password" required>
+      <button type="submit">Přihlásit</button>
     </div>
   </form>
+
+  <div class="sidebar" id="left">
+    <ul>
+      <li><a href="login" class="login_button">Příhlášení</a></li>
+      <li><a href="register" class="register_button">Registrace</a></li>
+    </ul>
+  </div>
+
 </body>
 
 </html>
