@@ -10,7 +10,7 @@
   <div class="stranka">
     <h1>Registrace</h1>
     <div class="register_form">
-      <form>
+      <form action="{{url_for('register')}}" method="POST">
         <hr>
         <label>Uživatelské jméno </label>
         <input type="text" placeholder="Uživatelské jméno" name="username" required>

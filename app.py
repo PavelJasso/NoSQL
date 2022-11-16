@@ -1,44 +1,65 @@
 import redis
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, validators
 from wtforms.validators import InputRequired, Email, Length
-from flask import Flask
 from flask_redis import FlaskRedis
+from flask_sqlalchemy import SQLAlchemy
+from flask import logging
 
-app = Flask(__name__)
+
+app  = Flask(__name__)
 redis_client = FlaskRedis(app)
+app.config['SECRET_KEY'] = 'hardsecretkey'
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'random_text'
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@127.0.0.1:3308/registration"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-class LoginForm(FlaskForm):
-    Email = StringField('email', validators = [InputRequired(), Length(min = 10, max = 50)])
-    password = PasswordField('heslo', validators = [InputRequired(), Length(min = 10, max = 50)])
-    remember = BooleanField('Pamatuj si mě')
+db = SQLAlchemy(app)
 
-class RegisterForm(FlaskForm):
-    email = StringField('Email', [InputRequired(), Length(min = 10, max = 50)])
-    password = PasswordField('Nové heslo', [
-        validators.DataRequired(),
-        validators.EqualTo('Potvrdit', message='Hesla musí být stejná!')])
-    confirm = PasswordField('Heslo znovu')
-    accept_tos = BooleanField('Přijímám podmínky.', [validators.DataRequired()])
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(100), unique = True)
+    password = db.Column(db.String(100))
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
 @app.route("/")
 def html():
     return render_template('template.html')
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    form = LoginForm()
-    return render_template('login.html', form = form)
+    """if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        login = User.query.filter_by(username=username, password=password).first()
+        if login is not None:
+            return redirect(url_for("template.html"))
+            """
+    return render_template("login.html")
 
-@app.route("/register")
+@app.route('/register' , methods = ['GET', 'POST'])
 def register():
-    form = RegisterForm() #zmenit
-    return render_template('register.html', form = form)
 
-if __name__ == "__main__":
+
+    if request.method == "POST":
+
+        register =User(request.form["username"], request.form["password"])
+
+        db.session.add(register)
+        db.session.commit()
+
+        flash("Registration was successfull, please login")
+        
+        return redirect(url_for('login'))
+    db.create_all()
+    return render_template('register.html')
+    
+
+if __name__ == "__main__":  
     app.run(debug=True)
 
