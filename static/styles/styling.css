@@ -110,6 +110,12 @@ p {
     text-align: center;
 }
 
+h3 {
+    color: black;
+    -webkit-text-stroke: 1px rgb(241, 15, 15);
+    font-size: 24px;
+}
+
 hr {
     border-style: groove;
     border-width: 1px;

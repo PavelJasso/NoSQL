@@ -47,15 +47,18 @@ def register():
 
 
     if request.method == "POST":
+        username = request.form["username"]
+        if username not in db.session.execute(db.select(User.username)).scalars():
+            register =User(request.form["username"], request.form["password"])
 
-        register =User(request.form["username"], request.form["password"])
+            db.session.add(register)
+            db.session.commit()
 
-        db.session.add(register)
-        db.session.commit()
-
-        flash("Registration was successfull, please login")
-        
-        return redirect(url_for('login'))
+            flash("Registrace byla úspěšná!")
+            return redirect(url_for('login'))
+        else:
+            flash("Jméno už existuje!")
+            
     db.create_all()
     return render_template('register.html')
     
