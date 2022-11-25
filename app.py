@@ -33,23 +33,27 @@ def html():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        login = User.query.filter_by(username=username, password=password).first()
-        if login is not None:
-            return redirect(url_for("template.html"))
-            """
+    if request.method == "POST":
+        user = request.form["username"]
+        passw = request.form["password"]
+        user_info = User.query.filter_by(username=user).first()
+        if user not in db.session.execute(db.select(User.username)).scalars():
+            flash("Neexistující uživatel!")
+        elif passw != user_info.password:
+            flash("Existující uživatel ale chybné heslo!")
+        else:
+            flash("Vítejte!")
+            
+            
     return render_template("login.html")
 
 @app.route('/register' , methods = ['GET', 'POST'])
 def register():
-
-
     if request.method == "POST":
-        username = request.form["username"]
-        if username not in db.session.execute(db.select(User.username)).scalars():
-            register =User(request.form["username"], request.form["password"])
+        user = request.form["username"]
+        passw = request.form["password"]
+        if user not in db.session.execute(db.select(User.username)).scalars():
+            register =User(user, passw)
 
             db.session.add(register)
             db.session.commit()

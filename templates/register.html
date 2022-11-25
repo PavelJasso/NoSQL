@@ -7,10 +7,14 @@
 </head>
 
 <body>
+
   <div class="stranka">
     <h1>Registrace</h1>
     <div class="register_form">
       <form action="{{url_for('register')}}" method="POST">
+        {% for mesg in get_flashed_messages() %}
+        <h3>{{ mesg }}</h3>
+        {% endfor %}
         <hr>
         <label>Uživatelské jméno </label>
         <input type="text" placeholder="Uživatelské jméno" name="username" required>
