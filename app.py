@@ -5,8 +5,8 @@ from wtforms import StringField, PasswordField, BooleanField, validators
 from wtforms.validators import InputRequired, Email, Length
 from flask_redis import FlaskRedis
 from flask_sqlalchemy import SQLAlchemy
-from flask import logging
-
+import flask_login
+from flask_login import login_required, logout_user, UserMixin, LoginManager, login_user, current_user
 
 app  = Flask(__name__)
 redis_client = FlaskRedis(app)
@@ -17,8 +17,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.login_view = "login"
+login_manager.login_message = "Prosím přihlaste se pro zobrazení této stránky!"
+login_manager.init_app(app)
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100), unique = True)
     password = db.Column(db.String(100))
@@ -31,8 +40,12 @@ class User(db.Model):
 def html():
     return render_template('template.html')
 
+@app.route("/login")
+def login():        
+    return render_template("login.html")
+
 @app.route("/login", methods=["GET", "POST"])
-def login():
+def login_post():
     if request.method == "POST":
         user = request.form["username"]
         passw = request.form["password"]
@@ -42,7 +55,8 @@ def login():
         elif passw != user_info.password:
             flash("Existující uživatel ale chybné heslo!")
         else:
-            flash("Vítejte!")
+            login_user(user_info)
+            return render_template("profil.html")
             
             
     return render_template("login.html")
@@ -65,6 +79,17 @@ def register():
             
     db.create_all()
     return render_template('register.html')
+
+@app.route("/profil")
+@login_required
+def profil():
+    return render_template("profil.html")
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
     
 
 if __name__ == "__main__":  
