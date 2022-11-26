@@ -9,11 +9,17 @@
 <body>
 
     <div class="stranka">
-        <div class="Nadpis">
-            <h3>
-                Vítej {{name}}!
-            </h3>
+        {% block content %}
+        <h1 class="title">{% block title %} MySQL {% endblock %}</h1>
+        <div class="content">
+            {% for uzivateles in users %}
+            <div class="users">
+                <p>{{uzivateles.id}}</p>
+                <p>Username: {{uzivateles.username}} | Password: {{uzivateles.password}}</p>
+            </div>
+            {% endfor %}
         </div>
+        {% endblock %}
     </div>
 
 
@@ -30,3 +36,4 @@
 </body>
 
 </html>
+'''%(p)

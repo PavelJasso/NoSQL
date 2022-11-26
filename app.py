@@ -7,6 +7,8 @@ from flask_redis import FlaskRedis
 from flask_sqlalchemy import SQLAlchemy
 import flask_login
 from flask_login import login_required, logout_user, UserMixin, LoginManager, login_user, current_user
+import mysql.connector
+from mysql.connector import cursor
 
 app  = Flask(__name__)
 redis_client = FlaskRedis(app)
@@ -66,7 +68,8 @@ def register():
     if request.method == "POST":
         user = request.form["username"]
         passw = request.form["password"]
-        if user not in db.session.execute(db.select(User.username)).scalars():
+        rep_passw = request.form["rep_password"]
+        if user not in db.session.execute(db.select(User.username)).scalars() and passw == rep_passw:
             register =User(user, passw)
 
             db.session.add(register)
@@ -74,6 +77,8 @@ def register():
 
             flash("Registrace byla úspěšná!")
             return redirect(url_for('login'))
+        elif user not in db.session.execute(db.select(User.username)).scalars() and passw != rep_passw:
+            flash("Hesla se neshodují!")
         else:
             flash("Jméno už existuje!")
             
@@ -84,6 +89,12 @@ def register():
 @login_required
 def profil():
     return render_template("profil.html")
+
+@app.route("/mysql")
+@login_required
+def mysql_db():
+    users = User.query.all()
+    return render_template("mysql.html", users=users)
 
 @app.route("/logout")
 @login_required
