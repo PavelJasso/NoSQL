@@ -93,7 +93,7 @@
 .register_form button:hover {
     background: rgb(33, 92, 255);
     transition: 0.5s;
-    
+
 }
 
 li a {
@@ -125,12 +125,6 @@ ul {
     position: fixed;
     text-align: center;
     box-shadow: 3px 3px 3px 3px black;
-}
-
-.Nadpis {
-    color: black;
-    -webkit-text-stroke: 2px rgb(241, 15, 15);
-    text-align: center;
 }
 
 p {
@@ -189,4 +183,7 @@ hr {
 
 .udaje_profil p {
     text-align: left;
+    margin-left: 20%;
+    margin-bottom: 20px;
+    font-size: 60px;
 }

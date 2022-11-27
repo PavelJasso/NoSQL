@@ -9,21 +9,20 @@
 <body>
 
     <div class="stranka">
-        <div class="Nadpis">
-            <h1>
-                Vítej {{current_user.name}}!
-            </h1>
-        </div>
+        <h1>
+            Vítej {{current_user.name}}!
+        </h1>
         <div class="udaje_profil">
-            <p>Uživatelské jméno: {{current_user.username}}</p>
-            <p>Jméno: {{current_user.name}}</p>
-            <p>Příjmení: {{current_user.surname}}</p>
+            <p><b>Uživatelské jméno:</b> {{current_user.username}}</p>
+            <p><b>Jméno:</b> {{current_user.name}}</p>
+            <p><b>Příjmení:</b> {{current_user.surname}}</p>
         </div>
     </div>
 
 
     <div class="sidebar" id="left">
         <ul>
+            <li><a href="/" class="mainpage">Hlavní stránka</a></li>
             <li><a href="logout" class="logout_button">Odhlásit</a></li>
             <li><a href="profil" class="profil_button">Profil</a></li>
             <li><a href="mysql" class="mysql_button">Mysql</a></li>

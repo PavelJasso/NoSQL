@@ -7,7 +7,11 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 app  = Flask(__name__)
+
+REDIS_URL = "redis://:password@localhost:6379/0"
 redis_client = FlaskRedis(app)
+
+
 app.config['SECRET_KEY'] = 'hardsecretkey'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@127.0.0.1:3308/registration"
@@ -38,12 +42,16 @@ class User(UserMixin, db.Model):
         self.surname = surname
 
 @app.route("/")
+@login_required
 def html():
     return render_template('template.html')
 
 @app.route("/login")
-def login():        
-    return render_template("login.html")
+def login(): 
+    if current_user in db.session.execute(db.select(User.username)).scalars():     
+        return render_template("profil.html")
+    else:
+        return render_template("login.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login_post():
@@ -104,6 +112,6 @@ def logout():
     return redirect(url_for('login'))
     
 
-if __name__ == "__main__":  
+if __name__ == "__main__":
     app.run(debug=True)
 

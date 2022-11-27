@@ -15,8 +15,10 @@
             {% for uzivateles in users %}
             <div class="users">
                 <p>ID: {{uzivateles.id}}</p>
-                <p>Username: {{uzivateles.username}} | Password: {{uzivateles.password}} | Name: {{uzivateles.name}} |
-                    Surname: {{uzivateles.surname}}</p>
+                <p><b>Username:</b> {{uzivateles.username}} | <b>Password:</b> {{uzivateles.password}} | <b>Name:</b>
+                    {{uzivateles.name}} |
+                    <b>Surname:</b> {{uzivateles.surname}}
+                </p>
             </div>
             {% endfor %}
         </div>
@@ -26,7 +28,10 @@
 
     <div class="sidebar" id="left">
         <ul>
+            <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+            {% if current_user.is_authenticated %}
             <li><a href="logout" class="logout_button">Odhlásit</a></li>
+            {% endif %}
             <li><a href="profil" class="profil_button">Profil</a></li>
             <li><a href="mysql" class="mysql_button">Mysql</a></li>
         </ul>

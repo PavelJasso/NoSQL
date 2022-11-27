@@ -37,6 +37,10 @@
 
   <div class="sidebar" id="left">
     <ul>
+      <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+      {% if current_user.is_authenticated %}
+      <li><a href="logout" class="logout_button">Odhlásit</a></li>
+      {% endif %}
       <li><a href="login" class="login_button">Přihlášení</a></li>
       <li><a href="register" class="register_button">Registrace</a></li>
     </ul>
