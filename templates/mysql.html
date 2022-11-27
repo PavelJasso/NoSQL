@@ -14,8 +14,9 @@
         <div class="content">
             {% for uzivateles in users %}
             <div class="users">
-                <p>{{uzivateles.id}}</p>
-                <p>Username: {{uzivateles.username}} | Password: {{uzivateles.password}}</p>
+                <p>ID: {{uzivateles.id}}</p>
+                <p>Username: {{uzivateles.username}} | Password: {{uzivateles.password}} | Name: {{uzivateles.name}} |
+                    Surname: {{uzivateles.surname}}</p>
             </div>
             {% endfor %}
         </div>

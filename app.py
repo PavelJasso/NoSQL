@@ -1,14 +1,10 @@
-import redis
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, validators
-from wtforms.validators import InputRequired, Email, Length
 from flask_redis import FlaskRedis
 from flask_sqlalchemy import SQLAlchemy
-import flask_login
 from flask_login import login_required, logout_user, UserMixin, LoginManager, login_user, current_user
-import mysql.connector
-from mysql.connector import cursor
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 app  = Flask(__name__)
 redis_client = FlaskRedis(app)
@@ -16,7 +12,6 @@ app.config['SECRET_KEY'] = 'hardsecretkey'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@127.0.0.1:3308/registration"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -33,10 +28,14 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100), unique = True)
     password = db.Column(db.String(100))
+    name = db.Column(db.String(100))
+    surname = db.Column(db.String(100))
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, name, surname):
         self.username = username
         self.password = password
+        self.name = name
+        self.surname = surname
 
 @app.route("/")
 def html():
@@ -69,8 +68,10 @@ def register():
         user = request.form["username"]
         passw = request.form["password"]
         rep_passw = request.form["rep_password"]
+        name = request.form["name"]
+        surname = request.form["surname"]
         if user not in db.session.execute(db.select(User.username)).scalars() and passw == rep_passw:
-            register =User(user, passw)
+            register =User(user, passw, name, surname)
 
             db.session.add(register)
             db.session.commit()
@@ -87,7 +88,7 @@ def register():
 
 @app.route("/profil")
 @login_required
-def profil():
+def profil(): 
     return render_template("profil.html")
 
 @app.route("/mysql")

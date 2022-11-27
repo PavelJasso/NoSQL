@@ -10,9 +10,14 @@
 
     <div class="stranka">
         <div class="Nadpis">
-            <h3>
-                Vítej {{name}}!
-            </h3>
+            <h1>
+                Vítej {{current_user.name}}!
+            </h1>
+        </div>
+        <div class="udaje_profil">
+            <p>Uživatelské jméno: {{current_user.username}}</p>
+            <p>Jméno: {{current_user.name}}</p>
+            <p>Příjmení: {{current_user.surname}}</p>
         </div>
     </div>
 

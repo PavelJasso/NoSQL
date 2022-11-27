@@ -46,6 +46,7 @@
     text-align: center;
     position: relative;
     left: 5%;
+
 }
 
 .register_form label {
@@ -116,7 +117,7 @@ h2 {
 }
 
 p {
-    color: rgb(255, 0, 200);
+    color: aliceblue;
     font-size: 30px;
     display: block;
     margin-left: 20%;
@@ -151,4 +152,8 @@ hr {
 .users p {
     color: aliceblue;
 
+}
+
+.udaje_profil p {
+    text-align: left;
 }

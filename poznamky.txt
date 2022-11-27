@@ -6,3 +6,7 @@ www.w3schools.com/html/html_form_input_types.asp
 5. ulozte pomoci knihovny SQL Alchemy (na flask) registrovaneho do databaze
 6. session
 7. ORM
+
+docker build -t nosql_docker:latest .
+pip freeze > requirements.txt          
+docker run -p 5000:5000 -d nosql_docker  
