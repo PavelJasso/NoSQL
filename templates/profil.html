@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styling.css') }}">
+    <title>Profil</title>
+</head>
+
+<body>
+
+    <div class="stranka">
+        <div class="Nadpis">
+            <h1>
+                Vítej {{current_user.name}}!
+            </h1>
+        </div>
+        <div class="udaje_profil">
+            <p>Uživatelské jméno: {{current_user.username}}</p>
+            <p>Jméno: {{current_user.name}}</p>
+            <p>Příjmení: {{current_user.surname}}</p>
+        </div>
+    </div>
+
+
+    <div class="sidebar" id="left">
+        <ul>
+            <li><a href="logout" class="logout_button">Odhlásit</a></li>
+            <li><a href="profil" class="profil_button">Profil</a></li>
+            <li><a href="mysql" class="mysql_button">Mysql</a></li>
+        </ul>
+    </div>
+</body>
+
+
+</body>
+
+</html>

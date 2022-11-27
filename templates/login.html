@@ -11,7 +11,10 @@
   <div class="stranka">
     <h1>Přihlášení</h1>
     <div class="login_form">
-      <form>
+      <form action="{{url_for('login')}}" method="POST">
+        {% for mesg in get_flashed_messages() %}
+        <h3>{{ mesg }}</h3>
+        {% endfor %}
         <hr>
         <label>Uživatelské jméno </label>
         <input type="text" placeholder="Uživatelské jméno" name="username" required>
