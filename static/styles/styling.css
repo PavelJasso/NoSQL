@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Rubik+Microbe&display=swap');
+
 * {
-    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .stranka {
-    background-image: url("images/template_bg.jpg");
+    background-image: url("images/background.svg");
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -28,12 +35,22 @@
     margin-bottom: 3%;
     margin-right: 5%;
     font-size: 20px;
+    border-radius: 50px;
 }
 
 .login_form button {
-    font-size: 24px;
+    font-size: 20px;
     border-width: 8px;
     border-color: aliceblue;
+    border-radius: 45px;
+    padding: 8px;
+    transition: 0.5s;
+    font-family: 'Nunito', sans-serif;
+}
+
+.login_form button:hover {
+    background: rgb(33, 92, 255);
+    transition: 0.5s;
 }
 
 .register_form {
@@ -53,17 +70,33 @@
     margin-bottom: 3%;
     margin-right: 5%;
     font-size: 20px;
+    border-radius: 50px;
 }
 
 .register_form button {
-    font-size: 24px;
+    font-size: 20px;
     border-width: 8px;
     border-color: aliceblue;
+    border-radius: 45px;
+    padding: 8px;
+    transition: 0.5s;
+    font-family: 'Nunito', sans-serif;
+}
+
+.register_form button:hover {
+    background: rgb(33, 92, 255);
+    transition: 0.5s;
+    
 }
 
 li a {
     text-decoration: none;
     color: rgb(226, 227, 235);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+li {
+    margin-bottom: 20px;
 }
 
 li a:hover {
@@ -81,19 +114,21 @@ ul {
 .sidebar {
     width: 10%;
     height: 100%;
-    background-image: url("images/sidebar.jpg");
+    background-color: #18487D;
     position: fixed;
     text-align: center;
+    box-shadow: 3px 3px 3px 3px black;
 }
 
 
 h1 {
-    color: rgb(88, 173, 145);
-    text-shadow: 5px 4px 5px;
+    color: #ccdafe;
     font-size: 70px;
-    -webkit-text-stroke: 2px black;
     text-align: center;
     margin-left: 0%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Rubik Microbe', cursive;
 }
 
 h2 {
@@ -102,11 +137,10 @@ h2 {
 }
 
 p {
-    color: rgb(255, 0, 200);
+    color: white;
     font-size: 30px;
     display: block;
-    margin-left: 20%;
-    margin-right: 10%;
+    float: center;
     text-align: center;
 }
 
