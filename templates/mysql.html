@@ -29,11 +29,12 @@
     <div class="sidebar" id="left">
         <ul>
             <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+            <li><a href="profil" class="profil_button">Profil</a></li>
+            <li><a href="mysql" class="mysql_button">Mysql</a></li>
             {% if current_user.is_authenticated %}
             <li><a href="logout" class="logout_button">Odhlásit</a></li>
             {% endif %}
-            <li><a href="profil" class="profil_button">Profil</a></li>
-            <li><a href="mysql" class="mysql_button">Mysql</a></li>
+
         </ul>
     </div>
 </body>
