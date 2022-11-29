@@ -3,6 +3,9 @@ from flask_redis import FlaskRedis
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, logout_user, UserMixin, LoginManager, login_user, current_user
 import pymysql
+import pymongo
+from pymongo import mongo_client
+from flask_mongoengine import MongoEngine
 
 pymysql.install_as_MySQLdb()
 
@@ -12,10 +15,18 @@ REDIS_URL = "redis://:password@localhost:6379/0"
 redis_client = FlaskRedis(app)
 
 
+app.config['MONGODB_SETTINGS'] = {
+    'db': 'kontakt',
+    'host': 'localhost',
+    'port': 27017
+}
 app.config['SECRET_KEY'] = 'hardsecretkey'
-
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@127.0.0.1:3308/registration"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+db_mongo = MongoEngine()
+db_mongo.init_app(app)
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
@@ -26,6 +37,14 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+class Kontakt(db_mongo.Document):
+    username = db_mongo.StringField()
+    telefon = db_mongo.StringField()
+    mesto = db_mongo.StringField()
+    ulice = db_mongo.StringField()
+    cislo_popisne = db_mongo.StringField()
+
 
 
 class User(UserMixin, db.Model):
@@ -52,6 +71,8 @@ def login():
         return render_template("profil.html")
     else:
         return render_template("login.html")
+
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login_post():
@@ -104,6 +125,33 @@ def profil():
 def mysql_db():
     users = User.query.all()
     return render_template("mysql.html", users=users)
+
+@app.route('/mongo_db', methods=['GET','POST'])
+@login_required
+def mongo_db():
+    if request.method == "POST":
+        username = current_user.username
+        telefon = request.form["telefon"]
+        mesto = request.form["mesto"]
+        ulice = request.form["ulice"]
+        cislo_popisne = request.form["cislo_popisne"] 
+        user = Kontakt.objects(username__in=[username]).first()
+        if user:
+            flash("Už máš zadaný kontakt!")
+        else:
+            kontakt = Kontakt(username=username,telefon=telefon, mesto=mesto, ulice=ulice, cislo_popisne=cislo_popisne)
+            kontakt.save()
+            return redirect(url_for('mongo_data'))
+    
+    return render_template("mongo_db.html")
+
+@app.route('/mongo_data')
+@login_required
+def mongo_data():
+    kontakt = Kontakt.objects()
+    return render_template("mongo_DATA.html", kontakt=kontakt)
+
+
 
 @app.route("/logout")
 @login_required

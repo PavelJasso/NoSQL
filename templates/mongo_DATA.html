@@ -9,19 +9,20 @@
 <body>
 
     <div class="stranka">
-        <h1>
-            Vítej {{current_user.name}}!
-        </h1>
-        <div class="udaje_profil">
-            <div class="profile-img">
-                <img src="static/styles/images/user.png" alt="profile-img">
+        {% block content %}
+        <h1 class="title">{% block title %} Mongo {% endblock %}</h1>
+        <div class="content">
+            {% for kontakty in kontakt %}
+            <div class="users">
+                <p><b>username:</b> {{kontakty.username}} | <b>Telefon:</b> {{kontakty.telefon}} | <b>Město:</b>
+                    {{kontakty.mesto}} | <b>Ulice:</b>
+                    {{kontakty.ulice}} |
+                    <b>Číslo popisné:</b> {{kontakty.cislo_popisne}}
+                </p>
             </div>
-            <div class="udaje">
-                <p><b>Uživatelské jméno:</b> {{current_user.username}}</p>
-                <p><b>Jméno:</b> {{current_user.name}}</p>
-                <p><b>Příjmení:</b> {{current_user.surname}}</p>
-            </div>
+            {% endfor %}
         </div>
+        {% endblock %}
     </div>
 
 
@@ -33,6 +34,7 @@
             <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
             <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
             <li><a href="logout" class="logout_button">Odhlásit</a></li>
+
         </ul>
     </div>
 </body>
@@ -41,3 +43,4 @@
 </body>
 
 </html>
+'''%(p)

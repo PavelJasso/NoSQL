@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styling.css') }}">
+    <title>Registrace</title>
+</head>
+
+<body>
+
+    <div class="stranka">
+        <h1>Kontakt</h1>
+        <div class="register_mongo_form">
+            <form action="{{url_for('mongo_db')}}" method="POST">
+                {% for mesg in get_flashed_messages() %}
+                <h3>{{ mesg }}</h3>
+                {% endfor %}
+                <hr>
+                <label>Uživatelské jméno: {{current_user.username}} </label>
+                <br>
+                <label>Telefon </label>
+                <input type="text" placeholder="Telefon" name="telefon" required>
+                <label>Mesto </label>
+                <input type="text" placeholder="Mesto" name="mesto" required>
+                <br>
+                <label>Ulice </label>
+                <input type="text" placeholder="Ulice" name="ulice" required>
+                <br>
+                <label>Číslo popisné </label>
+                <input type="text" placeholder="Číslo popisné" name="cislo_popisne" required>
+                <br>
+                <button type="submit">Potvrdit</button>
+                <hr>
+            </form>
+        </div>
+    </div>
+
+    <div class="sidebar" id="left">
+        <ul>
+            <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+            <li><a href="profil" class="profil_button">Profil</a></li>
+            <li><a href="mysql" class="mysql_button">Mysql</a></li>
+            <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
+            <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
+            <li><a href="logout" class="logout_button">Odhlásit</a></li>
+        </ul>
+    </div>
+</body>
+
+</body>
+
+</html>
