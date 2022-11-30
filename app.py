@@ -67,7 +67,7 @@ def html():
 
 @app.route("/login")
 def login(): 
-    if current_user in db.session.execute(db.select(User.username)).scalars():     
+    if current_user.is_authenticated:   
         return render_template("profil.html")
     else:
         return render_template("login.html")
@@ -93,24 +93,27 @@ def login_post():
 
 @app.route('/register' , methods = ['GET', 'POST'])
 def register():
-    if request.method == "POST":
-        user = request.form["username"]
-        passw = request.form["password"]
-        rep_passw = request.form["rep_password"]
-        name = request.form["name"]
-        surname = request.form["surname"]
-        if user not in db.session.execute(db.select(User.username)).scalars() and passw == rep_passw:
-            register =User(user, passw, name, surname)
+    if current_user.is_authenticated:
+        return render_template("profil.html")   
+    else:
+        if request.method == "POST":
+            user = request.form["username"]
+            passw = request.form["password"]
+            rep_passw = request.form["rep_password"]
+            name = request.form["name"]
+            surname = request.form["surname"]
+            if user not in db.session.execute(db.select(User.username)).scalars() and passw == rep_passw:
+                register =User(user, passw, name, surname)
 
-            db.session.add(register)
-            db.session.commit()
+                db.session.add(register)
+                db.session.commit()
 
-            flash("Registrace byla úspěšná!")
-            return redirect(url_for('login'))
-        elif user not in db.session.execute(db.select(User.username)).scalars() and passw != rep_passw:
-            flash("Hesla se neshodují!")
-        else:
-            flash("Jméno už existuje!")
+                flash("Registrace byla úspěšná!")
+                return redirect(url_for('login'))
+            elif user not in db.session.execute(db.select(User.username)).scalars() and passw != rep_passw:
+                flash("Hesla se neshodují!")
+            else:
+                flash("Jméno už existuje!")
             
     db.create_all()
     return render_template('register.html')
