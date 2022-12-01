@@ -23,6 +23,51 @@
             {% endfor %}
         </div>
         {% endblock %}
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("change_mongo_form");
+                var btn = document.getElementById("edit_btn");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                    btn.textContent = 'Skrýt';
+                } else {
+                    x.style.display = "none"
+                    btn.textContent = 'Změnit Kontakt';
+                }
+            }
+        </script>
+
+
+        <div class="edit_button">
+            <div class="change_mongo_form" id="change_mongo_form">
+                <form action="{{url_for('mongo_data')}}" method="POST">
+                    <h1>Změnit Kontakt</h1>
+                    {% for mesg in get_flashed_messages() %}
+                    <h3>{{ mesg }}</h3>
+                    {% endfor %}
+                    <hr>
+                    <label>Uživatelské jméno: {{current_user.username}} </label>
+                    <br>
+                    <label>Telefon </label>
+                    <input type="text" placeholder="Telefon" name="telefon" required>
+                    <label>Mesto </label>
+                    <input type="text" placeholder="Mesto" name="mesto" required>
+                    <br>
+                    <label>Ulice </label>
+                    <input type="text" placeholder="Ulice" name="ulice" required>
+                    <br>
+                    <label>Číslo popisné </label>
+                    <input type="text" placeholder="Číslo popisné" name="cislo_popisne" required>
+                    <br>
+                    <button type="submit">Potvrdit</button>
+                    <hr>
+                </form>
+            </div>
+            <button id="edit_btn" onclick="myFunction()">Skrýt</button>
+        </div>
+
+
     </div>
 
 
@@ -37,10 +82,8 @@
 
         </ul>
     </div>
-</body>
-
 
 </body>
+
 
 </html>
-'''%(p)

@@ -148,11 +148,30 @@ def mongo_db():
     
     return render_template("mongo_db.html")
 
-@app.route('/mongo_data')
+@app.route('/mongo_data', methods=['GET','POST'])
 @login_required
 def mongo_data():
     kontakt = Kontakt.objects()
+    if request.method == "POST":
+        username = current_user.username
+        telefon = request.form["telefon"]
+        mesto = request.form["mesto"]
+        ulice = request.form["ulice"]
+        cislo_popisne = request.form["cislo_popisne"] 
+        user = Kontakt.objects(username__in=[username]).first()
+        if user:
+            Kontakt.delete(user)
+            kontakt = Kontakt(username=username,telefon=telefon, mesto=mesto, ulice=ulice, cislo_popisne=cislo_popisne)
+            kontakt.save()
+            flash("Úspěšná změna!")
+            return redirect(url_for('mongo_data'))
+        else:
+            kontakt = Kontakt(username=username,telefon=telefon, mesto=mesto, ulice=ulice, cislo_popisne=cislo_popisne)
+            kontakt.save()
+            flash("Úspěšné zadání kontaktu!")
+            return redirect(url_for('mongo_data'))
     return render_template("mongo_DATA.html", kontakt=kontakt)
+
 
 
 

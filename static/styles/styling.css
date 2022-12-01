@@ -246,7 +246,6 @@ hr {
     margin-top: 5%;
     text-align: center;
     position: relative;
-    left: 5%;
 
 }
 
@@ -276,6 +275,63 @@ hr {
 }
 
 .register_mongo_form button:hover {
+    background: rgb(33, 92, 255);
+    transition: 0.5s;
+
+}
+
+.change_mongo_form {
+    text-align: center;
+    position: relative;
+}
+
+.change_mongo_form label {
+    color: aliceblue;
+    font-size: 24px;
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+}
+
+.change_mongo_form input {
+    text-align: center;
+    margin-bottom: 3%;
+    margin-right: 5%;
+    font-size: 20px;
+    border-radius: 50px;
+}
+
+.change_mongo_form button {
+    font-size: 18px;
+    border-width: 8px;
+    border-color: aliceblue;
+    border-radius: 45px;
+    padding: 8px;
+    transition: 0.5s;
+    font-family: 'Nunito', sans-serif;
+}
+
+.change_mongo_form button:hover {
+    background: rgb(33, 92, 255);
+    transition: 0.5s;
+
+}
+
+.edit_button {
+    text-align: center;
+}
+
+.edit_button button {
+    font-size: 18px;
+    border-width: 8px;
+    border-color: aliceblue;
+    border-radius: 45px;
+    padding: 8px;
+    transition: 0.5s;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+.edit_button button:hover {
     background: rgb(33, 92, 255);
     transition: 0.5s;
 
