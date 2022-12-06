@@ -47,7 +47,12 @@
       <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
       <li><a href="logout" class="logout_button">Odhlásit</a></li>
       {% endif %}
-
+      <li>
+        <div id="date"></div>
+        <script>
+          document.getElementById("date").innerHTML = new Date().toLocaleDateString("cs-CZ");
+        </script>
+      </li>
     </ul>
   </div>
 </body>
