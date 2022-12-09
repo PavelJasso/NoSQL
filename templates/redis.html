@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styling.css') }}">
+    <title>Vitej</title>
+</head>
+
+<body>
+
+    <!--Stranka-->
+    <div class="stranka">
+    </div>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+            <li><a href="profil" class="profil_button">Profil</a></li>
+            <li><a href="mysql" class="mysql_button">Mysql</a></li>
+            <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
+            <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
+            <li><a href="logout" class="logout_button">Odhlásit</a></li>
+            <li>
+                <div id="date"></div>
+                <script>
+                    document.getElementById("date").innerHTML = new Date().toLocaleDateString("cs-CZ");
+                </script>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

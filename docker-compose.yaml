@@ -1,1 +1,13 @@
-
+services:
+  redis:
+    image: redislabs/redismod
+    ports:
+      - '6379:6379'
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - '8001:8001'
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'

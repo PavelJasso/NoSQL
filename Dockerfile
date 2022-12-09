@@ -1,10 +1,6 @@
-FROM python:3.10-slim-buster
-
-WORKDIR /python-docker
-
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-
-COPY . .
-
-CMD [ "python", "-m" , "flask", "run", "--host=127.0.0.1"]
+FROM python:3.11.0a6-alpine3.15
+WORKDIR /
+COPY requirements.txt /
+RUN pip install -r requirements.txt --no-cache-dir
+COPY . /
+CMD python app.py

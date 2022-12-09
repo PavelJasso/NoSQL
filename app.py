@@ -1,19 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_redis import FlaskRedis
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, logout_user, UserMixin, LoginManager, login_user, current_user
 import pymysql
-import pymongo
-from pymongo import mongo_client
 from flask_mongoengine import MongoEngine
+from redis import Redis
+from datetime import datetime
+import time
+import pickle
 
 pymysql.install_as_MySQLdb()
 
 app  = Flask(__name__)
 
-REDIS_URL = "redis://:password@localhost:6379/0"
-redis_client = FlaskRedis(app)
-
+redis = Redis(host='localhost', port=6379)
 
 app.config['MONGODB_SETTINGS'] = {
     'db': 'kontakt',
@@ -29,6 +28,8 @@ db_mongo = MongoEngine()
 db_mongo.init_app(app)
 db = SQLAlchemy(app)
 
+
+
 login_manager = LoginManager()
 login_manager.login_view = "login"
 login_manager.login_message = "Prosím přihlaste se pro zobrazení této stránky!"
@@ -38,13 +39,13 @@ login_manager.init_app(app)
 def load_user(id):
     return User.query.get(int(id))
 
+
 class Kontakt(db_mongo.Document):
     username = db_mongo.StringField()
     telefon = db_mongo.StringField()
     mesto = db_mongo.StringField()
     ulice = db_mongo.StringField()
     cislo_popisne = db_mongo.StringField()
-
 
 
 class User(UserMixin, db.Model):
@@ -59,6 +60,18 @@ class User(UserMixin, db.Model):
         self.password = password
         self.name = name
         self.surname = surname
+
+
+@app.route("/redis")
+def xxx():
+    pass
+
+
+@app.route("/mysql_redis")
+def hello():
+    pass
+ 
+
 
 @app.route("/")
 @login_required
@@ -183,5 +196,5 @@ def logout():
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
 

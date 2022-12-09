@@ -9,5 +9,6 @@
 #pip freeze > requirements.txt          
 #db.kontakt.deleteMany({}) 
 #docker run --name mongodb -d -p 27017:27017 mongo
+#docker-compose up -d
 
 nefunguje Redis

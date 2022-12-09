@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styling.css') }}">
+    <title>Profil</title>
+</head>
+
+<body>
+
+    <div class="stranka">
+        {% for mesg in get_flashed_messages() %}
+        <h3>{{ mesg }}</h3>
+        {% endfor %}
+        {% block content %}
+        <h1 class="title">{% block title %} MySQL {% endblock %}</h1>
+        <div class="content">
+            {% for uzivateles in users %}
+            <div class="users">
+                <p>ID: {{uzivateles.id}}</p>
+                <p><b>Username:</b> {{uzivateles.username}} | <b>Password:</b> {{uzivateles.password}} | <b>Name:</b>
+                    {{uzivateles.name}} |
+                    <b>Surname:</b> {{uzivateles.surname}}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+    </div>
+
+
+    <div class="sidebar" id="left">
+        <ul>
+            <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+            <li><a href="profil" class="profil_button">Profil</a></li>
+            <li><a href="mysql" class="mysql_button">Mysql</a></li>
+            <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
+            <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
+            <li><a href="logout" class="logout_button">Odhlásit</a></li>
+            <li>
+                <div id="date"></div>
+                <script>
+                    document.getElementById("date").innerHTML = new Date().toLocaleDateString("cs-CZ");
+                </script>
+            </li>
+        </ul>
+    </div>
+</body>
+
+
+</body>
+
+</html>
+'''%(p)
