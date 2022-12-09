@@ -7,6 +7,8 @@ from redis import Redis
 from datetime import datetime
 import time
 import pickle
+from sqlalchemy import create_engine
+import hashlib
 
 pymysql.install_as_MySQLdb()
 
@@ -28,8 +30,6 @@ db_mongo = MongoEngine()
 db_mongo.init_app(app)
 db = SQLAlchemy(app)
 
-
-
 login_manager = LoginManager()
 login_manager.login_view = "login"
 login_manager.login_message = "Prosím přihlaste se pro zobrazení této stránky!"
@@ -38,7 +38,6 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
-
 
 class Kontakt(db_mongo.Document):
     username = db_mongo.StringField()
@@ -61,15 +60,28 @@ class User(UserMixin, db.Model):
         self.name = name
         self.surname = surname
 
-
-@app.route("/redis")
-def xxx():
-    pass
-
-
+@login_required
 @app.route("/mysql_redis")
-def hello():
-    pass
+def cache_redis():
+    if redis.exists("user"):
+        textData = redis.get("user")
+        data = pickle.loads(textData)
+        x = data["usr"]
+        mess = "Nahráno z Redisu!"
+        return render_template("mysql_redis.html", x=x, mess=mess)
+    else:
+        data = {}
+        userList = []
+        users = db.session.execute(db.select(User.username, User.name)).scalars()
+        for user in users:
+            userList.append(str(user))
+        data["usr"] = userList
+        textData = pickle.dumps(data)
+        redis.set("user", textData)
+        x = data["usr"]
+        redis.expire("user", 5)
+        mess = "Uloženo do Redisu!"
+        return render_template("mysql_redis.html", x=x, mess=mess)
  
 
 

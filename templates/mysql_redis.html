@@ -9,19 +9,18 @@
 <body>
 
     <div class="stranka">
+        {% block content %}
+        <h1 class="title">{% block title %} Redis {% endblock %}</h1>
         {% for mesg in get_flashed_messages() %}
         <h3>{{ mesg }}</h3>
         {% endfor %}
-        {% block content %}
-        <h1 class="title">{% block title %} MySQL {% endblock %}</h1>
+        <h3>
+            <p>{{mess}}</p>
+        </h3>
         <div class="content">
-            {% for uzivateles in users %}
+            {% for y in x %}
             <div class="users">
-                <p>ID: {{uzivateles.id}}</p>
-                <p><b>Username:</b> {{uzivateles.username}} | <b>Password:</b> {{uzivateles.password}} | <b>Name:</b>
-                    {{uzivateles.name}} |
-                    <b>Surname:</b> {{uzivateles.surname}}
-                </p>
+                <p>username: {{y}}</p>
             </div>
             {% endfor %}
         </div>
@@ -34,6 +33,7 @@
             <li><a href="/" class="mainpage">Hlavní stránka</a></li>
             <li><a href="profil" class="profil_button">Profil</a></li>
             <li><a href="mysql" class="mysql_button">Mysql</a></li>
+            <li><a href="mysql_redis" class="redis_button">Redis</a></li>
             <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
             <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
             <li><a href="logout" class="logout_button">Odhlásit</a></li>
