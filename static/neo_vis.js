@@ -39,15 +39,15 @@ function draw() {
             },
         },
         relationships:{
-            PRACOVAL_NA:{
+            "PRACOVAL_NA": {
                 [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
                     static: {
-                    label: "PRACOVAL_NA"
+                        label: "PRACOVAL_NA"
                     }
                 }
-            },
+            }
         },
-        initialCypher: "MATCH (n) RETURN n LIMIT 25"
+        initialCypher: "MATCH p=()-[r:PRACOVAL_NA]->() RETURN p LIMIT 25"
 
     };
     neoViz = new NeoVis.default(config);
