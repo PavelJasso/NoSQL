@@ -1,0 +1,97 @@
+id_piva,nazev,id_stupne,ibu,obsah_alkoholu,id_barvy,id_typu,id_pivovaru
+1,Adelaide,2,31,4.3,2,1,1
+2,AK 47,2,47,4.6,2,2,1
+3,Arónie,3,40,5.2,2,3,1
+4,Bohemia HOP,5,60,5.7,1,4,1
+5,Chilli Jane,2,30,4.3,2,1,1
+6,Dark Velvet,2,35,4,3,2,1
+7,DC Ale,2,40,4.6,1,2,1
+8,Děčíňák,2,35,4.5,1,1,1
+9,Dobrá sezóna,3,40,5.2,1,3,1
+10,Dos Bandidos,2,10,4.2,1,1,1
+11,Filoména,3,40,5,1,1,1
+12,Gentleman,2,40,4.4,1,2,1
+13,Karel,7,70,7,1,4,1
+14,Koroner,3,50,5,3,2,1
+15,Kudlich,3,38,5,1,1,1
+16,Pelikán,7,80,7.2,1,4,1
+17,PL/DC,2,30,4.5,1,1,1
+18,Sedmikráska,2,25,4,1,3,1
+19,Tomahawk,6,70,6.5,1,4,1
+20,Vivat Bohemia,2,40,4.6,1,2,1
+21,White Sabbath,7,55,5.9,1,2,1
+22,Zimní porter,4,70,5,3,5,1
+23,Brtník,3,49,4.5,1,1,2
+24,Vídeň,2,42,4.2,2,1,2
+25,Vopičák,1,38,3.8,1,6,2
+26,Kňour,3,48,4.6,3,1,2
+27,Bílá svině,2,43,4.5,1,7,3
+28,Černá pracka,6,56,5.9,3,8,3
+29,Černá svině,4,55,5.3,3,8,3
+30,Jasmínovec,5,49,4.8,2,8,3
+31,Qwjeták,2,45,4.2,1,7,3
+32,Vycpaná vydra,3,46,4.5,1,1,3
+33,Žitovec,4,50,4.7,2,8,3
+34,Sváteční,4,33,5.6,2,1,4
+35,Klíč,3,32,4.8,1,1,4
+36,Hvozd,2,29,4.5,1,1,4
+37,Luž,1,24,4.2,1,1,4
+39,Sklář,8,18,3.7,1,1,4
+40,Kleis,4,38,5.7,2,8,4
+41,Výroční,5,38,6.2,1,8,4
+42,Královské,3,25,4.8,1,1,4
+43,Žitný speciál,4,30,5.5,1,8,4
+44,Stovka,4,38,5.7,2,8,4
+45,Zimní ležák,3,32,5,2,1,4
+75,Ležák tmavý,3,43,4.6,3,3,7
+47,Early Evening Ale,2,45,4.4,1,2,5
+76,Studentská desítka,1,35,3.5,1,6,7
+48,Polotmavá 11°,2,36,4.4,2,1,5
+46,Summer Sunset Ale,1,35,4,1,2,5
+50,12° Ležák,3,40,4.9,1,1,5
+51,Hopbit,4,45,5.5,1,8,5
+52,Intergalactic Pale Ale,6,65,6.4,1,8,5
+53,Hibiscus speciál,7,17,6.8,1,8,5
+54,Černé 13°,4,60,5.5,3,1,6
+55,Juicy Lucy,6,50,7,1,4,6
+56,Krahulík 10°,1,38,4.1,1,6,6
+57,Krahulík 12°,3,42,5.1,1,1,6
+58,Nectar of Happiness,9,55,7.5,1,4,6
+59,Sour Passion Fruit,3,32,5.4,1,1,6
+60,White 12,3,38,5.2,1,7,6
+61,Mosaic Ale,3,42,5.1,1,9,6
+62,Robin,3,47,5.1,1,9,6
+63,Magor 15,6,41,5.9,2,1,6
+64,Hotline 15,6,52,7,1,4,6
+65,American Pale Ale,2,38,4.5,1,9,7
+66,Sumeček,2,47,4.1,1,9,7
+67,Cranberry 15°,6,36,6,2,8,7
+68,Christmas Ale,6,42,6,2,2,7
+69,India Pale Ale,5,56,5.1,1,4,7
+70,IPA Samurai,5,70,5.1,1,4,7
+71,Jantar,2,62,4.6,2,2,7
+72,Stout,3,58,4.8,3,10,7
+73,Chmelák,3,35,4.6,1,1,7
+74,Ležák světlý,3,38,4.6,1,1,7
+77,Svatomartinský speciál,6,51,6.1,2,8,7
+78,Dejv,1,38,4.2,1,2,8
+79,Sheriff,6,46,5.1,2,2,8
+80,Martinus,4,36,4.3,2,8,8
+81,ALEluja,4,40,4.1,1,2,8
+82,Světlý ležák,2,33,4.5,1,1,9
+83,American Pale Ale,4,65,5.1,2,9,9
+84,Ostroff,3,35,4.8,2,1,9
+85,Svižnej Emil,10,40,3.4,1,9,9
+86,Dittrich,5,30,5.5,3,8,9
+87,Zkouřená čarodějnice,4,30,5.1,2,8,9
+88,Výroční,4,33,4.5,1,8,9
+89,Stodolecký lišák,2,35,4.5,2,1,9
+90,Kanár,2,30,4.5,1,8,9
+91,Ležák 11%,2,30,4.5,1,1,10
+92,IPA 14%,5,50,6,2,4,10
+93,Sun Apa 12%,3,36,5.2,1,9,10
+94,Nealko IPA Free,11,35,0,1,4,10
+95,Talus Smash Ale 13%,4,55,5.6,1,2,10
+96,NEIPA 15% Nelson Sauvin&Motueka&Rakau,6,25,6,1,11,10
+97,Cyklopice 10%,1,28,4,1,1,10
+98,Opičí Ejl,2,38,4.9,2,2,10

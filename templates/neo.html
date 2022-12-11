@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styling.css') }}">
+    <title>Neo4j</title>
+</head>
+<div class="sidebar">
+    <ul>
+      <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+      <li><a href="profil" class="profil_button">Profil</a></li>
+      <li><a href="mysql" class="mysql_button">Mysql</a></li>
+      <li><a href="mysql_redis" class="redis_button">Redis</a></li>
+      <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
+      <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
+      <li><a href="neo4j" class="neo_button">Neo4j</a></li>
+      <li><a href="logout" class="logout_button">Odhlásit</a></li>
+      <li>
+        <div id="date"></div>
+        <script>
+          document.getElementById("date").innerHTML = new Date().toLocaleDateString("cs-CZ");
+        </script>
+      </li>
+    </ul>
+</div>
+<div id="viz"></div>
+<script src="https://unpkg.com/neovis.js@2.0.2"></script>
+<script type="text/javascript">var q = "{{ query }}"</script>
+<script type="module" src="{{url_for('static', filename='neo_vis.js')}}"></script>
+</html>
