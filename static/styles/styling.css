@@ -3,33 +3,153 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 * {
     overflow: hidden;
     margin: 0;
+
 }
+
 
 body {
     width: 100%;
-}
-
-.stranka {
+    height: 100vh;
     background-image: url("images/background.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    Overflow-x: scroll;
-    Overflow-y: scroll;
+}
+
+fa-solid fa-house{
+    position: relative;
+    
+}
+
+.sidebar {
+    position: relative;
+    left: 9%;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 40px;
+    display: inline-block;
+    height: 60px;
+    background-color: lightskyblue;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.sidebar ul{
+    position: relative;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.sidebar ul li{
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    margin-right: 15px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover{
+background-color: #20b2aa;
+color: white;
+transition: 0.3s;
+border-radius: 30px;
+}
+
+
+.sidebar ul li a{
+    position: relative;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 22px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 0;
+    bottom: 6px;
+    font-size: 20px;
+    font-family: 'Anton', sans-serif;
+}
+
+.sidebar ul li a:hover{
+    color: white;
+    font-weight: 400;
+}
+
+#time{
+    position: relative;
+    float: left;
+    padding-left: 25px;
+    padding-right: 0px;
+    padding-top: 16px;
+    padding-bottom: 22px;
+    font-size: 20px;
+    font-family: 'Anton', sans-serif;
+    color: #184870;
+}
+
+
+.stranka {
+    text-align: center;
+    display: block;
+}
+
+
+
+p {
+    font-size: 25px;
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+
+h1 {
+    color: #ccdafe;
+    font-size: 70px;
+    text-align: center;
+    margin-left: 0%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Bebas Neue', cursive;
+}
+
+h2 {
+    color: black;
+    -webkit-text-stroke: 2px rgb(241, 15, 15);
+    text-align: center;
+}
+
+
+h3 {
+    color: red;
+    -webkit-text-stroke: 1px rgb(241, 15, 15);
+    font-size: 24px;
+    font-family: fantasy;
+}
+
+hr {
+    border-style: groove;
+    border-width: 1px;
+    color: aliceblue;
 }
 
 .login_form {
     margin-top: 5%;
     text-align: center;
     position: relative;
-    left: 5%;
 }
 
 .login_form label {
@@ -42,6 +162,7 @@ body {
 
 .login_form input {
     text-align: center;
+    margin-top: 10px;
     margin-bottom: 3%;
     margin-right: 5%;
     font-size: 20px;
@@ -59,7 +180,7 @@ body {
 }
 
 .login_form button:hover {
-    background: rgb(33, 92, 255);
+    background: lightseagreen;
     transition: 0.5s;
 }
 
@@ -72,6 +193,8 @@ body {
 }
 
 .register_form label {
+    position: relative;
+    right: 100px;
     color: aliceblue;
     font-size: 24px;
     font-family: 'Merriweather', serif;
@@ -79,14 +202,19 @@ body {
 }
 
 .register_form input {
+    position: relative;
+    right: 100px;
     text-align: center;
-    margin-bottom: 3%;
-    margin-right: 5%;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-right: 50px;
     font-size: 20px;
     border-radius: 50px;
 }
 
 .register_form button {
+    position: relative;
+    right: 100px;
     font-size: 18px;
     border-width: 8px;
     border-color: aliceblue;
@@ -97,83 +225,89 @@ body {
 }
 
 .register_form button:hover {
-    background: rgb(33, 92, 255);
+    background: lightseagreen;
     transition: 0.5s;
 
 }
 
-li a {
-    text-decoration: none;
-    color: rgb(226, 227, 235);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-li {
-    margin-bottom: 20px;
-}
-
-li a:hover {
-    color: rgb(221, 20, 20);
-}
-
-ul {
-    height: 100%;
-    padding: 100% 0%;
-    font-size: 24px;
-    list-style-type: None;
+.register_mongo_form {
+    margin-top: 5%;
     text-align: center;
-}
-
-.sidebar {
-    width: 10%;
-    height: 100%;
-    background-color: #18487D;
-    position: fixed;
-    text-align: center;
-    box-shadow: 3px 3px 3px 3px black;
-}
-
-p {
-    font-size: 25px;
-    display: block;
     position: relative;
-    text-align: center;
+
 }
 
-b {
-    font-size: 25px;
-    text-align: left;
-    font-family: 'Anton', sans-serif;
-}
-
-h1 {
-    color: #ccdafe;
-    font-size: 70px;
-    text-align: center;
-    margin-left: 0%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-family: 'Rubik Microbe', cursive;
-}
-
-h2 {
-    color: black;
-    -webkit-text-stroke: 2px rgb(241, 15, 15);
-    text-align: center;
-}
-
-
-h3 {
-    color: black;
-    -webkit-text-stroke: 1px rgb(241, 15, 15);
-    font-size: 24px;
-    font-family: fantasy;
-}
-
-hr {
-    border-style: groove;
-    border-width: 1px;
+.register_mongo_form label {
+    position: relative;
+    top: 10px;
     color: aliceblue;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.register_mongo_form input {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    margin-right: 5%;
+    font-size: 20px;
+    border-radius: 50px;
+}
+
+.register_mongo_form button {
+    font-size: 18px;
+    border-width: 8px;
+    border-color: aliceblue;
+    border-radius: 45px;
+    padding: 8px;
+    transition: 0.5s;
+    font-family: 'Nunito', sans-serif;
+}
+
+.register_mongo_form button:hover {
+    background: lightseagreen;
+    transition: 0.5s;
+
+}
+
+.change_mongo_form {
+    text-align: center;
+    position: relative;
+}
+
+.change_mongo_form label {
+    position: relative;
+    top: 10px;
+    color: aliceblue;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.change_mongo_form input {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    margin-right: 5%;
+    font-size: 20px;
+    border-radius: 50px;
+}
+
+.change_mongo_form button {
+    font-size: 18px;
+    border-width: 8px;
+    border-color: aliceblue;
+    border-radius: 45px;
+    padding: 8px;
+    transition: 0.5s;
+    font-family: 'Nunito', sans-serif;
+}
+
+.change_mongo_form button:hover {
+    background: lightseagreen;
+    transition: 0.5s;
+
 }
 
 .users {
@@ -189,6 +323,7 @@ hr {
 }
 
 .users p {
+    position: relative;
     color: white;
     font-size: 25px;
     font-family: 'Anton', sans-serif, cursive;
@@ -206,7 +341,7 @@ hr {
 .udaje_profil {
     position: absolute;
     display: inline-block;
-    left: 20%;
+    left: 13.9%;
     padding-left: 150px;
     padding-right: 150px;
     background-color: lightblue;
@@ -239,88 +374,12 @@ hr {
     margin-top: 20px;
 }
 
-
-
-
-.register_mongo_form {
-    margin-top: 5%;
-    text-align: center;
-    position: relative;
-
-}
-
-.register_mongo_form label {
-    color: aliceblue;
-    font-size: 24px;
-    font-family: 'Merriweather', serif;
-    font-size: 20px;
-}
-
-.register_mongo_form input {
-    text-align: center;
-    margin-bottom: 3%;
-    margin-right: 5%;
-    font-size: 20px;
-    border-radius: 50px;
-}
-
-.register_mongo_form button {
-    font-size: 18px;
-    border-width: 8px;
-    border-color: aliceblue;
-    border-radius: 45px;
-    padding: 8px;
-    transition: 0.5s;
-    font-family: 'Nunito', sans-serif;
-}
-
-.register_mongo_form button:hover {
-    background: rgb(33, 92, 255);
-    transition: 0.5s;
-
-}
-
-.change_mongo_form {
-    text-align: center;
-    position: relative;
-}
-
-.change_mongo_form label {
-    color: aliceblue;
-    font-size: 24px;
-    font-family: 'Merriweather', serif;
-    font-size: 20px;
-}
-
-.change_mongo_form input {
-    text-align: center;
-    margin-bottom: 3%;
-    margin-right: 5%;
-    font-size: 20px;
-    border-radius: 50px;
-}
-
-.change_mongo_form button {
-    font-size: 18px;
-    border-width: 8px;
-    border-color: aliceblue;
-    border-radius: 45px;
-    padding: 8px;
-    transition: 0.5s;
-    font-family: 'Nunito', sans-serif;
-}
-
-.change_mongo_form button:hover {
-    background: rgb(33, 92, 255);
-    transition: 0.5s;
-
-}
-
 .edit_button {
     text-align: center;
 }
 
 .edit_button button {
+    top: 2%;
     font-size: 18px;
     border-width: 8px;
     border-color: aliceblue;
@@ -332,7 +391,7 @@ hr {
 }
 
 .edit_button button:hover {
-    background: rgb(33, 92, 255);
+    background: lightseagreen;
     transition: 0.5s;
 
 }

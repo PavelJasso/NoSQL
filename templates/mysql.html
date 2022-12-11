@@ -7,6 +7,33 @@
 </head>
 
 <body>
+<!--Sidebar-->
+<div class="sidebar">
+    <div id="time">
+        <script>
+        var datetime = new Date();
+        console.log(datetime);
+        document.getElementById("time").textContent = datetime; //zobrazi datum a cas
+        function refreshTime() { //obnova casu
+        const timeDisplay = document.getElementById("time");
+        const dateString = new Date().toLocaleString();
+        const formattedString = dateString.replace(", ", " - ");
+        timeDisplay.textContent = formattedString;
+        }
+        setInterval(refreshTime, 100);
+        </script>
+    </div>
+    <ul>
+      <li><a href="/" class="mainpage">Hlavní stránka</a></li>
+      <li><a href="profil" class="profil_button">Profil</a></li>
+      <li><a href="mysql" class="mysql_button">Mysql</a></li>
+      <li><a href="mysql_redis" class="redis_button">Redis</a></li>
+      <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
+      <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
+      <li><a href="neo4j" class="neo_button">Neo4j</a></li>
+      <li><a href="logout" class="logout_button">Odhlásit</a></li>
+    </ul>
+  </div>
 
     <div class="stranka">
         {% block content %}
@@ -24,30 +51,9 @@
         </div>
         {% endblock %}
     </div>
-
-
-    <div class="sidebar" id="left">
-        <ul>
-            <li><a href="/" class="mainpage">Hlavní stránka</a></li>
-            <li><a href="profil" class="profil_button">Profil</a></li>
-            <li><a href="mysql" class="mysql_button">Mysql</a></li>
-            <li><a href="mysql_redis" class="redis_button">Redis</a></li>
-            <li><a href="mongo_db" class="mongo_form_button">Mongo Reg</a></li>
-            <li><a href="mongo_data" class="mongo_button">Mongo Data</a></li>
-            <li><a href="neo4j" class="neo_button">Neo4j</a></li>
-            <li><a href="logout" class="logout_button">Odhlásit</a></li>
-            <li>
-                <div id="date"></div>
-                <script>
-                    document.getElementById("date").innerHTML = new Date().toLocaleDateString("cs-CZ");
-                </script>
-            </li>
-        </ul>
-    </div>
 </body>
 
 
 </body>
 
 </html>
-'''%(p)

@@ -23,7 +23,7 @@ app.config['MONGODB_SETTINGS'] = {
     'port': 27017
 }
 app.config['SECRET_KEY'] = 'hardsecretkey'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@127.0.0.1:3306/registration"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@127.0.0.1:3308/registration"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
