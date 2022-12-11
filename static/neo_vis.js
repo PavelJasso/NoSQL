@@ -12,25 +12,37 @@ function draw() {
             nodes: {
             },
             groups:{
-                person: {color:{border:'#5db665', background:'#8DCC93', highlight: {border: "#5db665", background:"#7bc482"}}, shape:"circle", font:{color: "black", size:8, strokeWidth: 0}, size:6},
-                movie: {color:{border:'#5d79b6', background:'#8d98cc', highlight: {border: "#5d6cb6", background:"#7b8cc4"}}, shape:"circle", font:{color: "black", size:8, strokeWidth: 0}, size:6},
+                Osoba: {color:{border:'#b67c5d', background:'#ccc98d', highlight: {border: "#b6925d", background:"#7bc482"}}, shape:"circle", font:{color: "black", size:8, strokeWidth: 0}, size:6},
+                Téma: {color:{border:'#5d79b6', background:'#8d98cc', highlight: {border: "#5d6cb6", background:"#7b8cc4"}}, shape:"circle", font:{color: "black", size:8, strokeWidth: 0}, size:6},
 
+            },
+            interaction: {
+                navigationButtons: true
             }
         },
         labels: {
-            Person: {
-                label: "name",
+            Osoba: {
+                label: "jméno",
                 [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
                     static: {
-                    group: "person"
+                    group: "Osoba"
                     }
                 }
             },
-            Movie: {
-                label: "name",
+            Téma: {
+                label: "název",
                 [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
                     static: {
-                    group: "movie"
+                    group: "Téma"
+                    }
+                }
+            },
+        },
+        relationships:{
+            PRACOVAL_NA:{
+                [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                    static: {
+                    label: "PRACOVAL_NA"
                     }
                 }
             },
