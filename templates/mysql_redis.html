@@ -37,16 +37,14 @@
 
     <div class="stranka">
         {% block content %}
-        <h1 class="title">{% block title %} Redis {% endblock %}</h1>
+        <h1 class="title_redis">{% block title %} Redis {% endblock %}</h1>
         {% for mesg in get_flashed_messages() %}
         <h3>{{ mesg }}</h3>
         {% endfor %}
-        <h3>
-            <p>{{mess}}</p>
-        </h3>
+        <h3>{{mess}}</h3>
         <div class="content">
             {% for y in x %}
-            <div class="users">
+            <div class="users_redis">
                 <p>username: {{y}}</p>
             </div>
             {% endfor %}

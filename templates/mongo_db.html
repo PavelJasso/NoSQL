@@ -43,12 +43,14 @@
                 <h3>{{ mesg }}</h3>
                 {% endfor %}
                 <hr>
-                <label>Uživatelské jméno: {{current_user.username}} </label>
+                <p>Uživatelské jméno: {{current_user.username}} </p>
                 <br>
                 <label>Telefon </label>
                 <input type="text" placeholder="Telefon" name="telefon" required>
-                <label>Mesto </label>
-                <input type="text" placeholder="Mesto" name="mesto" required>
+                <div class="fix">
+                <label>Město </label>
+                <input type="text" placeholder="Město" name="mesto" required>
+                </div> 
                 <br>
                 <label>Ulice </label>
                 <input type="text" placeholder="Ulice" name="ulice" required>

@@ -68,7 +68,7 @@ def cache_redis():
         textData = redis.get("user")
         data = pickle.loads(textData)
         x = data["usr"]
-        mess = "Nahráno z Redisu!"
+        mess = "Zobrazeno z Redisu!"
         return render_template("mysql_redis.html", x=x, mess=mess)
     else:
         data = {}
